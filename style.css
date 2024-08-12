@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #bbe0e0;
+  font-family: sans-serif;
+  padding: 20px 15px;
+  margin-bottom: 120px;
+}
+
+h1 {
+  text-align: center;
+  font-size: clamp(20px, 2.5vw, 42px);
+  margin-bottom: 25px;
+}
+
+h2 {
+  margin-left: 20px;
+  font-size: clamp(16px, 2.5vw, 34px);
+  margin-bottom: 15px;
+}
+@media (max-width: 720px) {
+  h2 {
+    margin-left: 0;
+  }
+}
+
+form {
+  background: #adcfcf;
+  border: 2px solid #6a8282;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 15px 20px;
+  align-items: center;
+}
+@media (max-width: 720px) {
+  form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+  }
+}
+
+label {
+  font-size: clamp(14px, 2.5vw, 20px);
+}
+
+input {
+  font-size: clamp(14px, 2.5vw, 20px);
+  border: 2px solid #6a8282;
+  padding: 5px 15px;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  grid-column: 1/3;
+  padding: 12px;
+  font-size: clamp(14px, 2.5vw, 24px);
+  font-weight: 600;
+  margin-top: 15px;
+  background-color: #6a8282;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+button:hover {
+  background-color: #3a4b4b;
+}
+
+p {
+  font-size: clamp(14px, 2.5vw, 22px);
+  margin-bottom: 30px;
+  width: 100%;
+  position: relative;
+}
+p::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #6a8282;
+  left: 0;
+  bottom: -15px;
+  border-radius: 2px;
+  display: none;
+}
+@media (max-width: 720px) {
+  p::after {
+    display: block;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #91bebe;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+@media (max-width: 720px) {
+  footer {
+    flex-direction: column;
+  }
+}
+footer h3 {
+  font-size: clamp(12px, 2.5vw, 14px);
+}/*# sourceMappingURL=style.css.map */

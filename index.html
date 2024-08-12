@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Розрахунки енергоефективності насосного устатковання</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Розрахунки енергоефективності</h1>
+
+    <!-- Формула (1): Показник енергоефективності для насосного устатковання -->
+    <h2>Формула (1): Показник енергоефективності</h2>
+    <form id="form1">
+      <label for="P1">Гідравлічна потужність мережі:</label>
+      <input type="number" id="P1" name="P1" required />
+
+      <label for="P2">Потужність на вході:</label>
+      <input type="number" id="P2" name="P2" required />
+
+      <button type="button" onclick="calculateEfficiency1()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result1">Результат: Показник енергоефективності</p>
+
+    <!-- Формула (2): Показник енергоефективності η -->
+    <h2>Формула (2): Показник енергоефективності</h2>
+    <form id="form2">
+      <label for="Pavg">Середня компенсована потужність мережі:</label>
+      <input type="number" id="Pavg" name="Pavg" required />
+
+      <label for="Pref">Еталонна потужність на вході:</label>
+      <input type="number" id="Pref" name="Pref" required />
+
+      <button type="button" onclick="calculateEfficiency2()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result2">Результат: Показник енергоефективності</p>
+
+    <!-- Формула (3): Гідравлічна потужність мережі P1 -->
+    <h2>Формула (3): Гідравлічна потужність мережі</h2>
+    <form id="form3">
+      <label for="P">Гідравлічна потужність мережі на i-му режимі:</label>
+      <input type="number" id="P" name="P" required />
+
+      <label for="t">Значення періоду роботи на i-му режимі:</label>
+      <input type="number" id="t" name="t" required />
+
+      <button type="button" onclick="calculatePower()">Розрахувати</button>
+    </form>
+    <p id="result3">Результат: Гідравлічна потужність мережі</p>
+
+    <!-- Формула (4): Гідравлічна потужність мережі на відповідному режимі її навантаження -->
+    <h2>
+      Формула (4): Гідравлічна потужність мережі на відповідному режимі її
+      навантаження
+    </h2>
+    <form>
+      <label for="A"
+        >Вплив кубічної складової періоду роботи на гідравлічну потужність,
+        (коефіцієнт при Q^3):</label
+      >
+      <input type="number" id="A" required />
+
+      <label for="B"
+        >Вплив квідратичної складової періоду роботи на гідравлічну потужність,
+        (коефіцієнт при Q^2):</label
+      >
+      <input type="number" id="B" required />
+
+      <label for="C"
+        >Лінійний вплив періоду роботи на гідравлічну потужність (коефіціент при
+        Q):</label
+      >
+      <input type="number" id="C" required />
+
+      <label for="D">Незалежна частина гідравлічної потужності:</label>
+      <input type="number" id="D" required />
+
+      <label for="Q"
+        >Значення періоду роботи насосного обладнання на відповідному режимі
+        навантаження:</label
+      >
+      <input type="number" id="Q4" required />
+
+      <button type="button" onclick="calculateHfit()">Розрахувати</button>
+    </form>
+    <p id="result4">
+      Результат: Гідравлічна потужність мережі на відповідному режимі її
+      навантаження
+    </p>
+
+    <!-- Формула (5): Гідравлічна потужність мережі P1 для насосного устатковання -->
+    <h2>Формула (5): Гідравлічна потужність мережі</h2>
+    <form id="form5">
+      <label for="Q">Витрата :</label>
+      <input type="number" id="Q" name="Q" required />
+
+      <label for="H">Геодезична висота:</label>
+      <input type="number" id="H" name="H" required />
+
+      <label for="k">Коефіцієнт опору:</label>
+      <input type="number" id="k" name="k" required />
+
+      <button type="button" onclick="calculateHydraulicPower()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result5">Результат: Гідравлічна потужність мережі</p>
+
+    <!-- Формула (6): Функція навантаження мережі F(Q) -->
+    <h2>Формула (6): Функція навантаження мережі</h2>
+    <form id="form6">
+      <label for="Hgeo">Геодезична висота:</label>
+      <input type="number" id="Hgeo" name="Hgeo" required />
+
+      <label for="kres">Коефіцієнт опору:</label>
+      <input type="number" id="kres" name="kres" required />
+
+      <button type="button" onclick="calculateLoadFunction()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result6">Результат: Функція навантаження мережі</p>
+
+    <!-- Формула (7): Еталонна потужність на вході P2 -->
+    <h2>Формула (7): Еталонна потужність на вході</h2>
+    <form id="form7">
+      <label for="Pout">Гідравлічна потужність на виході:</label>
+      <input type="number" id="Pout" name="Pout" required />
+
+      <label for="eta">Коефіцієнт корисної дії насоса:</label>
+      <input type="number" id="eta" name="eta" required />
+
+      <button type="button" onclick="calculateReferencePower()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result7">Результат: Еталонна потужність на вході</p>
+
+    <!-- Формула (8): Показник енергоефективності для всієї системи -->
+    <h2>Формула (8): Показник енергоефективності для всієї системи</h2>
+    <form id="form8">
+      <label for="E">Кількість енергії:</label>
+      <input type="number" id="E" name="E" required />
+
+      <label for="Esys">Енергія, передана системі:</label>
+      <input type="number" id="Esys" name="Esys" required />
+
+      <button type="button" onclick="calculateSystemEfficiency()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result8">Результат: Показник енергоефективності системи</p>
+
+    <!-- Формула (9): Коефіцієнт енергоефективності -->
+    <h2>Формула (9): Коефіцієнт енергоефективності</h2>
+    <form id="form9">
+      <label for="Qc">Потужність охолодження:</label>
+      <input type="number" id="Qc" name="Qc" required />
+
+      <label for="Win">Потужність на вході:</label>
+      <input type="number" id="Win" name="Win" required />
+
+      <button type="button" onclick="calculateEnergyEfficiencyRatio()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result9">Результат: Коефіцієнт енергоефективності</p>
+
+    <!-- Формула (10): Показник сезонної енергоефективності -->
+    <h2>Формула (10): Показник сезонної енергоефективності</h2>
+    <form id="form10">
+      <label for="Qcavg">Середня потужність охолодження:</label>
+      <input type="number" id="Qcavg" name="Qcavg" required />
+
+      <label for="Winavg">Середня потужність на вході:</label>
+      <input type="number" id="Winavg" name="Winavg" required />
+
+      <button type="button" onclick="calculateSeasonalEnergyEfficiency()">
+        Розрахувати
+      </button>
+    </form>
+    <p id="result10">Результат: Показник сезонної енергоефективності</p>
+
+    <footer>
+      <h3>
+        Кваліфікаційна робота магістра "Розроблення сучасної інформаційної
+        моделі з систематизації вимог законодавчих актів щодо визначення
+        показників енергоефективності насосних агрегатів"
+      </h3>
+      <h3>Виконав судент групи СТЗ2301 Меший Т.С.</h3>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
